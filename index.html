@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guitarist - Music Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #a36e6e;
+            scroll-behavior: smooth;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn:hover {
+            background-color: #c0392b;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.5rem;
+            color: #2c3e50;
+            position: relative;
+        }
+
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: #e74c3c;
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+        }
+
+        .header-scrolled {
+            padding: 15px 0;
+            background-color: rgba(44, 62, 80, 0.95);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            color: #e74c3c;
+        }
+
+        .nav-links {
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            color: white;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: #e74c3c;
+            left: 0;
+            bottom: -5px;
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(44, 48, 48, 0.685), rgba(13, 85, 107, 0.514)), url('https://www.facebook.com/photo/?fbid=122137580924935552&set=a.122105424152935552') no-repeat center center/cover;
+            color: white;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .scroll-down {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 1.5rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0) translateX(-50%);
+            }
+            40% {
+                transform: translateY(-10px) translateX(-50%);
+            }
+            60% {
+                transform: translateY(-5px) translateX(-50%);
+            }
+        }
+
+        /* About Section */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .about-image {
+            flex: 1;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .about-image:hover {
+            transform: scale(1.02);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            background-color: #f0f0f0;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(44, 62, 80, 0.8);
+            color: white;
+            padding: 15px;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        /* Videos Section */
+        .videos-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 30px;
+        }
+
+        .video-item {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .video-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .video-thumbnail {
+            position: relative;
+            height: 200px;
+            background-color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .video-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .video-thumbnail:hover img {
+            transform: scale(1.05);
+        }
+
+        .play-button {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background: rgba(231, 76, 60, 0.8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .video-thumbnail:hover .play-button {
+            background: rgba(231, 76, 60, 1);
+            transform: scale(1.1);
+        }
+
+        .video-info {
+            padding: 20px;
+        }
+
+        .video-info h3 {
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: flex;
+            gap: 50px;
+        }
+
+        .contact-info {
+            flex: 1;
+        }
+
+        .contact-info h3 {
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        .contact-info p {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-info i {
+            margin-right: 10px;
+            color: #e74c3c;
+            width: 20px;
+        }
+
+        .contact-form {
+            flex: 1;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #2c3e50;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #e74c3c;
+            outline: none;
+        }
+
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 50px 0 20px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 40px;
+        }
+
+        .footer-about {
+            flex: 2;
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-logo i {
+            margin-right: 10px;
+            color: #e74c3c;
+        }
+
+        .footer-links {
+            flex: 1;
+        }
+
+        .footer-links h3,
+        .footer-social h3 {
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-links h3:after,
+        .footer-social h3:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background-color: #e74c3c;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #e74c3c;
+        }
+
+        .footer-social {
+            flex: 1;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: #e74c3c;
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                right: -100%;
+                width: 80%;
+                height: calc(100vh - 80px);
+                background-color: #2c3e50;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 50px;
+                transition: right 0.5s ease;
+                z-index: 999;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links li {
+                margin: 15px 0;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .hamburger.active div:nth-child(1) {
+                transform: rotate(-45deg) translate(-5px, 6px);
+            }
+
+            .hamburger.active div:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active div:nth-child(3) {
+                transform: rotate(45deg) translate(-5px, -6px);
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content,
+            .contact-container {
+                flex-direction: column;
+            }
+
+            .gallery-grid,
+            .videos-container {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-container">
+            <a href="#home" class="logo"><i class="fas fa-guitar"></i>Guitarist</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#videos">Videos</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <h1>Professional Guitarist & Music Teacher</h1>
+            <p>Creating beautiful music and sharing my passion with students worldwide. With over 15 years of experience, I bring expertise and dedication to every performance and lesson.</p>
+            <a href="#contact" class="btn">Book a Lesson</a>
+        </div>
+        <a href="#about" class="scroll-down">
+            <i class="fas fa-chevron-down"></i>
+        </a>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>I'm a professional guitarist with over 15 years of experience performing and teaching. My journey with the guitar began when I was just 12 years old, and since then, music has become my life's passion.</p>
+                    <p>I've performed in venues across the country and collaborated with various artists in the music industry. My teaching approach focuses on helping students discover their unique musical voice while building a solid technical foundation.</p>
+                    <p>Whether you're a beginner looking to play your first chords or an advanced player seeking to refine your skills, I'm here to guide you on your musical journey.</p>
+                    <a href="#contact" class="btn">Get in Touch</a>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1511735111819-9a3f7709049c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Guitarist playing">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="section gallery-section">
+        <div class="container">
+            <h2 class="section-title">Gallery</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1511735111819-9a3f7709049c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Performance">
+                    <div class="gallery-overlay">
+                        <h3>Live Performance</h3>
+                        <p>Rocking the stage at City Music Hall</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1525201548942-d8732f6617a0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Guitar closeup">
+                    <div class="gallery-overlay">
+                        <h3>Guitar Closeup</h3>
+                        <p>My favorite Fender Stratocaster</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1510915361894-db8b60106cb1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Studio session">
+                    <div class="gallery-overlay">
+                        <h3>Studio Session</h3>
+                        <p>Recording my latest album</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1494232410401-ad00d5433cfa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Concert">
+                    <div class="gallery-overlay">
+                        <h3>Concert Night</h3>
+                        <p>Performing for a sold-out crowd</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1541689592655-f5f52825a3b8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Teaching">
+                    <div class="gallery-overlay">
+                        <h3>Teaching</h3>
+                        <p>Sharing knowledge with students</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1558636508-e0db3814bd1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Guitar collection">
+                    <div class="gallery-overlay">
+                        <h3>My Collection</h3>
+                        <p>Some of my favorite instruments</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Videos Section -->
+    <section id="videos" class="section">
+        <div class="container">
+            <h2 class="section-title">Videos</h2>
+            <div class="videos-container">
+                <div class="video-item">
+                    <div class="video-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Fingerstyle Guitar Tutorial">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3>Fingerstyle Guitar Tutorial</h3>
+                        <p>Learn the basics of fingerstyle guitar with this step-by-step tutorial. Perfect for beginners looking to expand their skills.</p>
+                    </div>
+                </div>
+                <div class="video-item">
+                    <div class="video-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Live Performance at Jazz Club">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3>Live Performance at Jazz Club</h3>
+                        <p>Watch my recent performance at the Blue Note Jazz Club. Featuring original compositions and jazz standards.</p>
+                    </div>
+                </div>
+                <div class="video-item">
+                    <div class="video-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1525201548942-d8732f6617a0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Guitar Maintenance Tips">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3>Guitar Maintenance Tips</h3>
+                        <p>Essential tips for keeping your guitar in perfect condition. Learn how to clean, restring, and maintain your instrument.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title">Contact Me</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Get in Touch</h3>
+                    <p>I'd love to hear from you! Whether you're interested in lessons, performances, or just want to talk music, feel free to reach out.</p>
+                    <p><i class="fas fa-envelope"></i> info@guitarist.com</p>
+                    <p><i class="fas fa-phone"></i> (123) 456-7890</p>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Music Street, City, State 12345</p>
+                    <p><i class="fas fa-clock"></i> Mon-Fri: 9am-6pm | Sat: 10am-2pm</p>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo"><i class="fas fa-guitar"></i>Guitarist</div>
+                    <p>Professional guitarist and music teacher dedicated to sharing the joy of music. With years of experience and a passion for teaching, I help students of all levels achieve their musical goals.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#videos">Videos</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h3>Follow Me</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-spotify"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Guitarist. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('header-scrolled');
+            } else {
+                header.classList.remove('header-scrolled');
+            }
+        });
+        
+        // Contact form submission
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you for your message! I will get back to you soon.');
+                contactForm.reset();
+            });
+        }
+        
+        // Video thumbnail click simulation
+        const videoThumbnails = document.querySelectorAll('.video-thumbnail');
+        videoThumbnails.forEach(thumbnail => {
+            thumbnail.addEventListener('click', function() {
+                alert('This would play a video in a real implementation.');
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
